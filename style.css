@@ -1,0 +1,19 @@
+* { box-sizing:border-box; }
+body { margin:0; font-family:Arial,Helvetica,sans-serif; background:#f2f4f7; color:#111; }
+.app { width:min(900px,94%); margin:28px auto 50px; }
+h1 { margin-bottom:18px; }
+.card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 10px rgba(0,0,0,.07); }
+.card h2 { margin-top:0; font-size:20px; }
+label { display:grid; grid-template-columns:180px 1fr; gap:12px; align-items:center; margin:10px 0; font-weight:600; }
+input, textarea { width:100%; padding:10px 12px; border:1px solid #bbb; border-radius:7px; font:inherit; }
+.item { border-bottom:1px solid #ddd; padding:13px 0; }
+.item:last-child { border-bottom:0; }
+.item-title { font-weight:600; margin-bottom:8px; }
+.subitem { margin:8px 0 8px 24px; }
+.options { display:flex; flex-wrap:wrap; gap:10px 18px; }
+.options label { display:inline-flex; width:auto; margin:0; gap:6px; font-weight:400; }
+.options input { width:auto; }
+.point-options { margin-left:24px; }
+.pdf-btn { width:100%; border:0; border-radius:10px; padding:15px; font-size:17px; font-weight:700; cursor:pointer; background:#111; color:#fff; }
+.pdf-btn:hover { opacity:.88; }
+@media(max-width:600px) { label { grid-template-columns:1fr; gap:5px; } }
