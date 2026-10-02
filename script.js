@@ -11,7 +11,7 @@ const persiapan = [
   {num:"3", title:"Bendera Kerja", options:["Ada","Tidak"]},
   {num:"4", title:"APD Pekerja", options:["Ada","Tidak"]},
   {num:"5", title:"Pengukuran Suhu Rel", options:["≤ 45°C","> 45°C"]},
-  {num:"6", title:"Dengan Semboyan", options:["",""], subitems:[
+  {num:"6", title:"Dengan Semboyan", subitems:[
     {label:"a S2A", options:["Ada","Tidak ada"]},
     {label:"b S2B", options:["Ada","Tidak ada"]},
     {label:"c S3", options:["Ada","Tidak ada"]},
@@ -27,7 +27,7 @@ const akhir = [
     {label:"a isi balas antara bantalan", options:["Baik","Kurang Baik"]},
     {label:"b bahu balas ( min 15 cm)", options:["Baik","Kurang Baik"]}
   ]},
-  {num:"5", title:"Taspak (penstabilan)", options:["",""], subitems:[
+  {num:"5", title:"Taspat (penstabilan)", subitems:[
     {label:"a S2A", options:["Ada","Tidak ada"]},
     {label:"b S2B", options:["Ada","Tidak ada"]},
     {label:"c Lain-lain", text:true, placeholder:"... km/jam"}
