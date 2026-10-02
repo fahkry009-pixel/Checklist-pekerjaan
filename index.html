@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checklist Pekerjaan</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist Pekerjaan</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="app">
-  <h1>Checklist Pekerjaan</h1>
+  <div class="app">
+    <h1>Checklist Pekerjaan</h1>
 
-  <section class="card">
-    <h2>Identitas</h2>
-    <label>Judul Pekerjaan
-      <input id="judul" value="PENGGANTIAN BANTALAN BETON">
-    </label>
-    <label>Wilayah UPT
-      <input id="wilayah" placeholder="Isi wilayah UPT">
-    </label>
-    <label>Nama Pengawas
-      <input id="nama" placeholder="Isi nama pengawas">
-    </label>
-    <label>NIPP Pengawas
-      <input id="nipp" placeholder="Isi NIPP pengawas">
-    </label>
-  </section>
+    <section class="card">
+      <h2>Identitas</h2>
+      <label>Judul Pekerjaan
+        <input id="judul" value="PENGGANTIAN BANTALAN BETON">
+      </label>
+      <label>Lokasi Pekerjaan
+        <input id="lokasi" placeholder="Isi lokasi Pekerjaan">
+      </label>
+      <label>Wilayah UPT
+        <input id="wilayah" placeholder="Isi wilayah UPT">
+      </label>
+      <label>Nama Pengawas
+        <input id="nama" placeholder="Isi nama pengawas">
+      </label>
+      <label>NIPP Pengawas
+        <input id="nipp" placeholder="Isi NIPP pengawas">
+      </label>
+    </section>
 
-  <section class="card">
-    <h2>Persiapan</h2>
-    <div id="persiapan"></div>
-  </section>
+    <section class="card">
+      <h2>Persiapan</h2>
+      <div id="persiapan"></div>
+    </section>
 
-  <section class="card">
-    <h2>Pemeriksaan Akhir</h2>
-    <div id="akhir"></div>
-  </section>
+    <section class="card">
+      <h2>Pemeriksaan Akhir</h2>
+      <div id="akhir"></div>
+    </section>
 
-  <section class="card">
-    <h2>Catatan</h2>
-    <textarea id="catatan" rows="4" placeholder="Catatan tambahan..."></textarea>
-  </section>
+    <section class="card">
+      <h2>Catatan</h2>
+      <textarea id="catatan" rows="4" placeholder="Catatan tambahan..."></textarea>
+    </section>
 
-  <button class="pdf-btn" onclick="buatPDF()">📄 Buat PDF</button>
-</div>
-<script src="script.js"></script>
+    <button class="pdf-btn" onclick="buatPDF()">📄 Buat PDF</button>
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
