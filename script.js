@@ -6,37 +6,43 @@
 */
 
 const persiapan = [
-  {num:"1", title:"Form Izin Kerja", options:["Ada","Tidak"]},
-  {num:"2", title:"Ketersediaan Train Watcher", options:["Ada","Tidak"]},
-  {num:"3", title:"Bendera Kerja", options:["Ada","Tidak"]},
-  {num:"4", title:"APD Pekerja", options:["Ada","Tidak"]},
-  {num:"5", title:"Pengukuran Suhu Rel", options:["≤ 45°C","> 45°C"]},
-  {num:"6", title:"Dengan Semboyan", subitems:[
-    {label:"a S2A", options:["Ada","Tidak ada"]},
-    {label:"b S2B", options:["Ada","Tidak ada"]},
-    {label:"c S3", options:["Ada","Tidak ada"]},
-    {label:"d Lain-lain", text:true, placeholder:"... km/jam"}
-  ]}
+  { num: "1", title: "Form Izin Kerja", options: ["Ada", "Tidak"] },
+  { num: "2", title: "Ketersediaan Train Watcher", options: ["Ada", "Tidak"] },
+  { num: "3", title: "Bendera Kerja", options: ["Ada", "Tidak"] },
+  { num: "4", title: "APD Pekerja", options: ["Ada", "Tidak"] },
+  { num: "5", title: "Pengukuran Suhu Rel", options: ["≤ 45°C", "> 45°C"] },
+  {
+    num: "6", title: "Dengan Semboyan", subitems: [
+      { label: "a S2A", options: ["Ada", "Tidak ada"] },
+      { label: "b S2B", options: ["Ada", "Tidak ada"] },
+      { label: "c S3", options: ["Ada", "Tidak ada"] },
+      { label: "d Lain-lain", text: true, placeholder: "... km/jam" }
+    ]
+  }
 ];
 
 const akhir = [
-  {num:"1", title:"Pemadatan", options:["Baik","Kurang Baik"]},
-  {num:"2", title:"Pemeriksaan Geometri", options:["Baik","Kurang Baik"]},
-  {num:"3", title:"Penambat", options:["Lengkap","Tidak"]},
-  {num:"4", title:"Profil balas", subitems:[
-    {label:"a isi balas antara bantalan", options:["Baik","Kurang Baik"]},
-    {label:"b bahu balas ( min 15 cm)", options:["Baik","Kurang Baik"]}
-  ]},
-  {num:"5", title:"Taspat (penstabilan)", subitems:[
-    {label:"a S2A", options:["Ada","Tidak ada"]},
-    {label:"b S2B", options:["Ada","Tidak ada"]},
-    {label:"c Lain-lain", text:true, placeholder:"... km/jam"}
-  ]},
-  {num:"6", title:"Laporan selesai pekerjaan", options:["Sudah","Belum"]}
+  { num: "1", title: "Pemadatan", options: ["Baik", "Kurang Baik"] },
+  { num: "2", title: "Pemeriksaan Geometri", options: ["Baik", "Kurang Baik"] },
+  { num: "3", title: "Penambat", options: ["Lengkap", "Tidak"] },
+  {
+    num: "4", title: "Profil balas", subitems: [
+      { label: "a isi balas antara bantalan", options: ["Baik", "Kurang Baik"] },
+      { label: "b bahu balas ( min 15 cm)", options: ["Baik", "Kurang Baik"] }
+    ]
+  },
+  {
+    num: "5", title: "Taspat (penstabilan)", subitems: [
+      { label: "a S2A", options: ["Ada", "Tidak ada"] },
+      { label: "b S2B", options: ["Ada", "Tidak ada"] },
+      { label: "c Lain-lain", text: true, placeholder: "... km/jam" }
+    ]
+  },
+  { num: "6", title: "Laporan selesai pekerjaan", options: ["Sudah", "Belum"] }
 ];
 
 function radioHTML(name, options) {
-  return `<div class="options">${options.map((op,j) =>
+  return `<div class="options">${options.map((op, j) =>
     `<label><input type="radio" name="${name}" value="${op}"> ${op}</label>`
   ).join("")}</div>`;
 }
@@ -95,7 +101,7 @@ function collect(items, prefix) {
 
 function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
   }[c]));
 }
 
@@ -127,6 +133,7 @@ function makeSection(title, items) {
 
 function buatPDF() {
   const judul = document.getElementById("judul").value || "CHECKLIST PEKERJAAN";
+  const lokasi = document.getElementById("lokasi").value;
   const wilayah = document.getElementById("wilayah").value;
   const nama = document.getElementById("nama").value;
   const nipp = document.getElementById("nipp").value;
@@ -161,13 +168,14 @@ function buatPDF() {
   </style></head><body>
     <h1>${esc(judul)}</h1>
     <div class="identity">
+      <div><span>Lokasi Pekerjaan</span><span>:</span><span>${esc(lokasi || ". . .")}</span></div>
       <div><span>Wilayah UPT</span><span>:</span><span>${esc(wilayah || "...")}</span></div>
       <div><span>Nama Pengawas</span><span>:</span><span>${esc(nama || "...")}</span></div>
       <div><span>NIPP Pengawas</span><span>:</span><span>${esc(nipp || "...")}</span></div>
     </div>
     ${makeSection("Persiapan", P)}
     ${makeSection("Pemeriksaan Akhir", A)}
-    <div class="note"><b>Catatan:</b><br>${esc(catatan).replace(/\n/g,"<br>")}</div>
+    <div class="note"><b>Catatan:</b><br>${esc(catatan).replace(/\n/g, "<br>")}</div>
     <div class="no-print" style="margin-top:20px">
       <button onclick="window.print()">Cetak / Simpan sebagai PDF</button>
     </div>
